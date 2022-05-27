@@ -1,0 +1,88 @@
+<div class="container">
+    <form [formGroup]="registrationForm">
+
+        <!-- username -->
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input id="username" class="form-control" type="text" name="username" formControlName="username">
+        </div>
+
+        <!-- email -->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" class="form-control" type="email" name="email" formControlName="email">
+        </div>
+
+        <!-- password group -->
+        <div formGroupName="passwordGroup">
+            <!-- password -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" class="form-control" type="password" name="password">
+            </div>
+            <!-- confirm password -->
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input id="confirm-password" class="form-control" type="password" name="confirm-password">
+            </div>
+        </div>
+
+        <!-- profession -->
+        <div class="form-group">
+            <label for="Profession">Profession</label>
+            <select name="profession" id="profession" formControlName="profession">
+                <option value="default"></option>
+                <option value="developer">Developer</option>
+                <option value="analyst">Analyst</option>
+                <option value="designer">Designer</option>
+                <option value="teacher">Teacher</option>
+                <option value="consultant">Consultant</option>
+                <option value="content-creator">Content Creator</option>
+                <option value="student">Student</option>
+            </select>
+        </div>
+
+        <!-- course -->
+        <div class="form-group">
+            <label for="Course">Course</label>
+            <select name="course" id="course" formControlName="course">
+                <option value="default"></option>
+                <option value="front-end">Front-end Development</option>
+                <option value="back-end">Back-end Development</option>
+                <option value="fullstack">Fullstack Development</option>
+            </select>
+        </div>
+
+        <!-- address group -->
+        <div formGroupName="addressGroup">
+            <!-- street -->
+            <div class="form-group">
+                <label for="street">Street</label>
+                <input id="street" class="form-control" type="text" name="street">
+            </div>
+            <!-- city -->
+            <div class="form-group">
+                <label for="city">City</label>
+                <input id="city" class="form-control" type="text" name="city">
+            </div>
+            <!-- pincode -->
+            <div class="form-group">
+                <label for="pincode">Pincode</label>
+                <input id="pincode" class="form-control" type="number" name="pincode">
+            </div>
+        </div>
+
+
+        <!-- phone number -->
+        <div class="form-group">
+            <label for="phone-number">Phone Number</label>
+            <input id="phone-number" class="form-control" type="text" name="phone-number">
+        </div>
+
+        <!-- subscribe -->
+        <div class="form-group">
+            <input id="subscribe" class="form-check-input" type="checkbox" name="subscribe">
+            <label for="subscribe" class="form-check-label">Send me promotional offers</label>
+        </div>
+    </form>
+</div>
