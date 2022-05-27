@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="registrationForm" class="text-light my-5" style="max-width: 600px; margin: 0 auto;">
+    <form [formGroup]="registrationForm" class="text-light my-5" style="max-width: 600px; margin: 0 auto;" novalidate>
 
         <br>
         <h3 class="text-white">Registration form</h3>
@@ -169,8 +169,6 @@
             <button type="submit" class="ms-auto btn btn-primary" (click)="submitHandler()">Register</button>
         </div>
         <br>
-
-
 
     </form>
 </div>
