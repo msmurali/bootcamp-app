@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({ selector: 'app-form', templateUrl: './form.component.html' })
 export class FormComponent implements OnInit {
@@ -9,20 +9,23 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.registrationForm = this.fb.group({
-      username: [''],
-      email: [''],
+      username: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
       passwordGroup: this.fb.group({
-        password: [''],
-        confirmPassword: [''],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
       }),
-      profession: [''],
-      course: [''],
+      profession: ['', [Validators.required]],
+      course: ['', [Validators.required]],
       addressGroup: this.fb.group({
-        street: [''],
-        city: [''],
-        pincode: [''],
+        street: ['', [Validators.required]],
+        city: ['', [Validators.required]],
+        pincode: ['', [Validators.required, Validators.pattern('/^[0-9]$/')]],
       }),
-      phoneNumber: [''],
+      phoneNumber: [
+        '',
+        [Validators.required, Validators.pattern('/^[0-9]{1,10}$/')],
+      ],
       subscribe: [false],
     });
   }
