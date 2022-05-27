@@ -1,17 +1,34 @@
 <div class="container">
     <form [formGroup]="registrationForm" class="text-light mt-5" style="max-width: 600px; margin: 0 auto;">
 
+        <br>
+        <h3 class="text-white">Registration form</h3>
+        <br>
+
         <!-- username -->
         <div class="form-group">
             <label class="ms-1 mb-1" for="username">Username</label>
-            <input id="username" class="form-control" type="text" name="username" formControlName="username">
+            <input id="username" class="form-control" [class.is-invalid]="username.touched && username.invalid"
+                type="text" name="username" formControlName="username">
+            <small class="text-warning"
+                *ngIf="username.touched && username.invalid && username.errors?.['required']">Username is
+                required</small>
+            <small class="text-warning"
+                *ngIf="username.touched && username.invalid && username.errors?.['minlength']">Username must have
+                {{username.errors?.['minlength'].requiredLength}} or more characters</small>
+
         </div>
         <br>
 
         <!-- email -->
         <div class="form-group">
             <label class="ms-1 mb-1" for="email">Email</label>
-            <input id="email" class="form-control" type="email" name="email" formControlName="email">
+            <input id="email" class="form-control" [class.is-invalid]="email.touched && email.invalid" type="email"
+                name="email" formControlName="email">
+            <small class="text-warning" *ngIf="email.touched && email.invalid && email.errors?.['required']">Email is
+                required</small>
+            <small class="text-warning" *ngIf="email.touched && email.invalid && email.errors?.['email']">Not a valid
+                Email</small>
         </div>
         <br>
 
@@ -20,13 +37,20 @@
             <!-- password -->
             <div class="form-group">
                 <label class="ms-1 mb-1" for="password">Password</label>
-                <input id="password" class="form-control" type="password" name="password">
+                <input id="password" class="form-control" type="password" name="password" fromControlName="password">
+                <small class="text-warning"
+                    *ngIf="password.touched && password.invalid && password.errors?.['required']">Password is
+                    required</small>
+                <small class="text-warning"
+                    *ngIf="password.touched && password.invalid && password.errors?.['minlength']">Password must have
+                    {{password.errors?.['required'].requiredLength}} or more characters</small>
             </div>
             <br>
             <!-- confirm password -->
             <div class="form-group">
                 <label class="ms-1 mb-1" for="confirm-password">Confirm Password</label>
-                <input id="confirm-password" class="form-control" type="password" name="confirm-password">
+                <input id="confirm-password" class="form-control" type="password" name="confirm-password"
+                    fromControlName="confirmPassword">
             </div>
             <br>
         </div>
@@ -35,7 +59,6 @@
         <div class="form-group">
             <label class="ms-1 mb-1" for="Profession">Profession</label>
             <select class="form-select" name="profession" id="profession" formControlName="profession">
-                <option value="default"></option>
                 <option value="developer">Developer</option>
                 <option value="analyst">Analyst</option>
                 <option value="designer">Designer</option>
@@ -51,7 +74,6 @@
         <div class="form-group">
             <label class="ms-1 mb-1" for="Course">Course</label>
             <select name="course" class="form-select" id="course" formControlName="course">
-                <option value="default"></option>
                 <option value="front-end">Front-end Development</option>
                 <option value="back-end">Back-end Development</option>
                 <option value="fullstack">Fullstack Development</option>
@@ -64,19 +86,19 @@
             <!-- street -->
             <div class="form-group">
                 <label class="ms-1 mb-1" for="street">Street</label>
-                <input id="street" class="form-control" type="text" name="street">
+                <input id="street" class="form-control" type="text" name="street" fromControlName="street">
             </div>
             <br>
             <!-- city -->
             <div class="form-group">
                 <label class="ms-1 mb-1" for="city">City</label>
-                <input id="city" class="form-control" type="text" name="city">
+                <input id="city" class="form-control" type="text" name="city" fromControlName="city">
             </div>
             <br>
             <!-- pincode -->
             <div class="form-group">
                 <label class="ms-1 mb-1" for="pincode">Pincode</label>
-                <input id="pincode" class="form-control" type="number" name="pincode">
+                <input id="pincode" class="form-control" type="number" name="pincode" fromControlName="pincode">
             </div>
             <br>
         </div>
@@ -85,13 +107,13 @@
         <!-- phone number -->
         <div class="form-group">
             <label class="ms-1 mb-1" for="phone-number">Phone Number</label>
-            <input id="phone-number" class="form-control" type="text" name="phone-number">
+            <input id="phone-number" class="form-control" type="text" name="phone-number" formControlName="phoneNumber">
         </div>
         <br>
 
         <!-- subscribe -->
         <div class="form-group">
-            <input id="subscribe" class="form-check-input" type="checkbox" name="subscribe">
+            <input id="subscribe" class="form-check-input" type="checkbox" name="subscribe" fromControlName="subscribe">
             <label class="ms-1 mb-1" for="subscribe" class="form-check-label ms-3">Send me promotional
                 offers</label>
         </div>
