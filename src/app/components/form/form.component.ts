@@ -47,7 +47,6 @@ export class FormComponent implements OnInit {
   }
 
   get password() {
-    console.log(this.registrationForm.get('passwordGroup.password'));
     return this.registrationForm.get('passwordGroup.password');
   }
 

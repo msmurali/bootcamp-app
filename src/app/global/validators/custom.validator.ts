@@ -4,11 +4,12 @@ export class CustomValidator {
   public static match(
     control: AbstractControl
   ): { [key: string]: boolean } | null {
-    let formControls = (<FormGroup>control).controls;
-    let first = formControls[Object.keys(formControls)[0]];
+    let formControls: { [key: string]: AbstractControl } = (<FormGroup>control)
+      .controls;
 
-    let hasMatch = Object.keys(formControls).every((key) => {
-      formControls[key].value === first.value;
+    let hasMatch: boolean = Object.keys(formControls).every((key) => {
+      formControls[key].value ===
+        formControls[Object.keys(formControls)[0]].value;
     });
 
     return hasMatch ? null : { match: true };
