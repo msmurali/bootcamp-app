@@ -24,11 +24,14 @@ export class FormComponent implements OnInit {
       addressGroup: this.fb.group({
         street: ['', [Validators.required]],
         city: ['', [Validators.required]],
-        pincode: ['', [Validators.required, Validators.pattern('/^[0-9]$/')]],
+        pincode: [
+          '',
+          [Validators.required, Validators.pattern(new RegExp(/^\d$/))],
+        ],
       }),
       phoneNumber: [
         '',
-        [Validators.required, Validators.pattern('/^[0-9]{10}$/')],
+        [Validators.required, Validators.pattern(new RegExp(/^\d{10}$/))],
       ],
       subscribe: [false],
     });

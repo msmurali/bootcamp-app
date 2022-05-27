@@ -112,7 +112,7 @@
             <!-- street -->
             <div class="form-group">
                 <label class="ms-1 mb-1 form-label" for="street">Street</label>
-                <input id="street" class="form-control" type="text" name="street" fromControlName="street"
+                <input id="street" class="form-control" type="text" name="street" formControlName="street"
                     [class.invalid]="street.touched && street.invalid">
                 <small class="d-block text-warning"
                     *ngIf="street.touched && street.invalid && street.errors?.['required']">Street is
@@ -122,7 +122,7 @@
             <!-- city -->
             <div class="form-group">
                 <label class="ms-1 mb-1 form-label" for="city">City</label>
-                <input id="city" class="form-control" type="text" name="city" fromControlName="city"
+                <input id="city" class="form-control" type="text" name="city" formControlName="city"
                     [class.invalid]="city.touched && city.invalid">
                 <small class="d-block text-warning"
                     *ngIf="city.touched && city.invalid && city.errors?.['required']">City is
@@ -132,7 +132,7 @@
             <!-- pincode -->
             <div class="form-group">
                 <label class="ms-1 mb-1 form-label" for="pincode">Pincode</label>
-                <input id="pincode" class="form-control" type="number" name="pincode" fromControlName="pincode"
+                <input id="pincode" class="form-control" type="text" name="pincode" formControlName="pincode"
                     [class.invalid]="pincode.touched && pincode.invalid">
                 <small class="d-block text-warning"
                     *ngIf="pincode.touched && pincode.invalid && pincode.errors?.['required']">Pincode is
