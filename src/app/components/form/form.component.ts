@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CustomValidator } from '../../global/validators/custom.validator';
 
 @Component({ selector: 'app-form', templateUrl: './form.component.html' })
 export class FormComponent implements OnInit {
@@ -11,10 +12,13 @@ export class FormComponent implements OnInit {
     this.registrationForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      passwordGroup: this.fb.group({
-        password: ['', [Validators.required, Validators.minLength(6)]],
-        confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
-      }),
+      passwordGroup: this.fb.group(
+        {
+          password: ['', [Validators.required, Validators.minLength(6)]],
+          confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+        },
+        { validator: CustomValidator.match }
+      ),
       profession: ['', [Validators.required]],
       course: ['', [Validators.required]],
       addressGroup: this.fb.group({
@@ -24,13 +28,13 @@ export class FormComponent implements OnInit {
       }),
       phoneNumber: [
         '',
-        [Validators.required, Validators.pattern('/^[0-9]{1,10}$/')],
+        [Validators.required, Validators.pattern('/^[0-9]{10}$/')],
       ],
       subscribe: [false],
     });
   }
 
-  get usename() {
+  get username() {
     return this.registrationForm.get('username');
   }
 
@@ -43,6 +47,7 @@ export class FormComponent implements OnInit {
   }
 
   get password() {
+    console.log(this.registrationForm.get('passwordGroup.password'));
     return this.registrationForm.get('passwordGroup.password');
   }
 
