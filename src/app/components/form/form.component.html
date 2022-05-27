@@ -76,7 +76,8 @@
         <!-- profession -->
         <div class="form-group">
             <label class="ms-1 mb-1 form-label" for="Profession">Profession</label>
-            <select class="form-select" name="profession" id="profession" formControlName="profession">
+            <select class="form-select" name="profession" id="profession" formControlName="profession"
+                [class.is-invalid]="profession.touched && profession.invalid">
                 <option value="developer">Developer</option>
                 <option value="analyst">Analyst</option>
                 <option value="designer">Designer</option>
@@ -85,17 +86,24 @@
                 <option value="content-creator">Content Creator</option>
                 <option value="student">Student</option>
             </select>
+            <small class="d-block text-warning"
+                *ngIf="profession.touched && profession.invalid && profession.errors?.['required']">Profession is
+                required</small>
         </div>
         <br>
 
         <!-- course -->
         <div class="form-group">
-            <label class="ms-1 mb-1 form-label" for="Course">Course</label>
-            <select name="course" class="form-select" id="course" formControlName="course">
+            <label class="ms-1 mb-1 form-label" for="course">Course</label>
+            <select name="course" class="form-select" id="course" formControlName="course"
+                [class.is-invalid]="course.touched && course.invalid">
                 <option value="front-end">Front-end Development</option>
                 <option value="back-end">Back-end Development</option>
                 <option value="fullstack">Fullstack Development</option>
             </select>
+            <small class="d-block text-warning"
+                *ngIf="course.touched && course.invalid && course.errors?.['required']">Course is
+                required</small>
         </div>
         <br>
 
@@ -104,19 +112,34 @@
             <!-- street -->
             <div class="form-group">
                 <label class="ms-1 mb-1 form-label" for="street">Street</label>
-                <input id="street" class="form-control" type="text" name="street" fromControlName="street">
+                <input id="street" class="form-control" type="text" name="street" fromControlName="street"
+                    [class.invalid]="street.touched && street.invalid">
+                <small class="d-block text-warning"
+                    *ngIf="street.touched && street.invalid && street.errors?.['required']">Street is
+                    required</small>
             </div>
             <br>
             <!-- city -->
             <div class="form-group">
                 <label class="ms-1 mb-1 form-label" for="city">City</label>
-                <input id="city" class="form-control" type="text" name="city" fromControlName="city">
+                <input id="city" class="form-control" type="text" name="city" fromControlName="city"
+                    [class.invalid]="city.touched && city.invalid">
+                <small class="d-block text-warning"
+                    *ngIf="city.touched && city.invalid && city.errors?.['required']">City is
+                    required</small>
             </div>
             <br>
             <!-- pincode -->
             <div class="form-group">
                 <label class="ms-1 mb-1 form-label" for="pincode">Pincode</label>
-                <input id="pincode" class="form-control" type="number" name="pincode" fromControlName="pincode">
+                <input id="pincode" class="form-control" type="number" name="pincode" fromControlName="pincode"
+                    [class.invalid]="pincode.touched && pincode.invalid">
+                <small class="d-block text-warning"
+                    *ngIf="pincode.touched && pincode.invalid && pincode.errors?.['required']">Pincode is
+                    required</small>
+                <small class="d-block text-warning"
+                    *ngIf="pincode.touched && pincode.invalid && pincode.errors?.['pattern']">Not a valid
+                    pincode</small>
             </div>
             <br>
         </div>
@@ -126,6 +149,12 @@
         <div class="form-group">
             <label class="ms-1 mb-1 form-label" for="phone-number">Phone Number</label>
             <input id="phone-number" class="form-control" type="text" name="phone-number" formControlName="phoneNumber">
+            <small class="d-block text-warning"
+                *ngIf="phoneNumber.touched && phoneNumber.invalid && phoneNumber.errors?.['required']">Phone number is
+                required</small>
+            <small class="d-block text-warning"
+                *ngIf="phoneNumber.touched && phoneNumber.invalid && phoneNumber.errors?.['pattern']">Not a valid phone
+                number</small>
         </div>
         <br>
 

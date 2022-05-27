@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CustomValidator } from '../../global/validators/custom.validator';
+import { CustomValidators } from '../../global/validators/custom.validator';
 
 @Component({ selector: 'app-form', templateUrl: './form.component.html' })
 export class FormComponent implements OnInit {
@@ -17,7 +17,7 @@ export class FormComponent implements OnInit {
           password: ['', [Validators.required, Validators.minLength(6)]],
           confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
         },
-        { validator: CustomValidator.match }
+        { validator: CustomValidators.match }
       ),
       profession: ['', [Validators.required]],
       course: ['', [Validators.required]],
@@ -56,6 +56,10 @@ export class FormComponent implements OnInit {
 
   get profession() {
     return this.registrationForm.get('profession');
+  }
+
+  get course() {
+    return this.registrationForm.get('course');
   }
 
   get addressGroup() {
