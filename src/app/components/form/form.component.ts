@@ -26,7 +26,7 @@ export class FormComponent implements OnInit {
         city: ['', [Validators.required]],
         pincode: [
           '',
-          [Validators.required, Validators.pattern(new RegExp(/^\d$/))],
+          [Validators.required, Validators.pattern(new RegExp(/^\d+$/))],
         ],
       }),
       phoneNumber: [
@@ -83,5 +83,11 @@ export class FormComponent implements OnInit {
 
   get phoneNumber() {
     return this.registrationForm.get('phoneNumber');
+  }
+
+  submitHandler() {
+    if (this.registrationForm.valid) {
+      console.log(this.registrationForm);
+    }
   }
 }
