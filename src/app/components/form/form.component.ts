@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { apiService } from 'src/app/services/api.service';
 import { CustomValidators } from '../../global/validators/custom.validator';
 
 @Component({ selector: 'app-form', templateUrl: './form.component.html' })
 export class FormComponent implements OnInit {
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private apiService: apiService) {}
 
   registrationForm: FormGroup;
 
@@ -87,7 +88,7 @@ export class FormComponent implements OnInit {
 
   submitHandler() {
     if (this.registrationForm.valid) {
-      console.log(this.registrationForm);
+      this.apiService.register(this.registrationForm.value);
     }
   }
 }
