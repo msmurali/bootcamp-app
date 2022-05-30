@@ -170,5 +170,15 @@
         </div>
         <br>
 
+        <!-- alert -->
+        <div class="alert alert-success" role="alert" *ngIf="status==='success'">
+            Success!
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngIf="status==='error'">
+            Something went wrong!
+        </div>
+        <br>
+
     </form>
 </div>

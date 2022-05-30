@@ -5,13 +5,10 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class apiService {
-  private _url: string = 'http://localhost:8080/register';
+  private _url: string = 'http://localhost:80/register';
   constructor(private http: HttpClient) {}
 
   register(data: any) {
-    this.http.post(this._url, data).subscribe(
-      (response) => console.log(response),
-      (error) => console.log(error)
-    );
+    return this.http.post(this._url, data);
   }
 }

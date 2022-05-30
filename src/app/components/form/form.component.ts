@@ -9,6 +9,8 @@ export class FormComponent implements OnInit {
 
   registrationForm: FormGroup;
 
+  status: string = 'idle';
+
   ngOnInit() {
     this.registrationForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
@@ -86,9 +88,23 @@ export class FormComponent implements OnInit {
     return this.registrationForm.get('phoneNumber');
   }
 
+  resetStatus() {
+    setTimeout(() => {
+      this.status = 'idle';
+    }, 3000);
+  }
+
   submitHandler() {
     if (this.registrationForm.valid) {
-      this.apiService.register(this.registrationForm.value);
+      this.apiService.register(this.registrationForm.value).subscribe(
+        (response) => {
+          this.status = 'success';
+          this.resetStatus();
+        },
+        (error) => {
+          this.resetStatus();
+        }
+      );
     }
   }
 }
