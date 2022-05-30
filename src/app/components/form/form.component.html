@@ -165,7 +165,8 @@
                 <label class="ms-1 mb-1 form-label" for="subscribe" class="form-check-label ms-3">Send me promotional
                     offers</label>
             </div>
-            <button type="submit" class="ms-auto btn btn-primary" (click)="submitHandler()">Register</button>
+            <button type="submit" class="ms-auto btn btn-primary" [disabled]="registrationForm.invalid"
+                (click)="submitHandler()">Register</button>
         </div>
         <br>
 
